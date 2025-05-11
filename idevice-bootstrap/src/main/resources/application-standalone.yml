@@ -1,0 +1,77 @@
+server:
+  port: 8080
+
+spring:
+  # mcp stdio模式
+#  main:
+#    web-application-type: none
+#    banner-mode: off
+  ai:
+    mcp:
+      server:
+#        stdio: true
+        name: idevice-mcp-server
+        version: 0.1.0
+  application:
+    name: IDEVICE-SERVICE
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./db/tempdb;AUTO_SERVER=TRUE
+    username: dev
+    password: Dev@123456
+  h2:
+    console:
+      enabled: true
+      path: /h2-admin  # 自定义控制台路径
+      settings:
+        web-allow-others: true  # 允许远程访问
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  autoconfigure:
+    exclude: org.redisson.spring.starter.RedissonAutoConfigurationV2
+
+mybatis-plus:
+  repositoryPackage: info.zhihui.idevice.**.repository
+  mapperLocations: classpath*:mapper/**/*Repository.xml
+  typeAliasesPackage: info.zhihui.idevice.**.entity
+
+logging:
+  file:
+    name: ./logs/idevice.log
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+    info.zhihui.idevice: debug
+  logback:
+    rolling policy:
+      max-file-size: 100MB
+      max-history: 30
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [${PID}] [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [${PID}] [%thread] %-5level %logger{36} - %msg%n"
+
+lock:
+  distributed: false
+  local-lock-properties:
+    max-size: 10000
+
+# springdoc-openapi项目配置
+springdoc:
+  group-configs:
+    - group: '门禁管理'
+      packages-to-scan: info.zhihui.idevice.web.access.controller
+    - group: '摄像头管理'
+      packages-to-scan: info.zhihui.idevice.web.camera.controller
+    - group: '人员管理'
+      packages-to-scan: info.zhihui.idevice.web.person.controller
+    - group: '配置管理'
+      packages-to-scan: info.zhihui.idevice.web.config.controller
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# 对接真实设备：true；对接模拟数据：false
+useRealDevice: true

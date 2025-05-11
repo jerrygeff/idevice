@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>info.zhihui</groupId>
+        <artifactId>idevice</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <artifactId>idevice-components</artifactId>
+    <version>${revision}</version>
+    <name>idevice-components</name>
+    <description>Component module, containing reusable function components independent of business logic</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>idevice-components-datasource</module>
+        <module>idevice-components-lock</module>
+    </modules>
+
+</project>

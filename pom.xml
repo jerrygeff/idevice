@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>info.zhihui</groupId>
+    <artifactId>idevice</artifactId>
+    <version>${revision}</version>
+    <name>idevice</name>
+    <description>AI-Friendly Intelligent Device Integration Platform</description>
+    <packaging>pom</packaging>
+
+    <!-- 子模块管理 -->
+    <modules>
+        <module>idevice-bootstrap</module>
+        <module>idevice-common</module>
+        <module>idevice-components</module>
+        <module>idevice-core</module>
+        <module>idevice-web</module>
+        <module>idevice-feature</module>
+        <module>idevice-mcp</module>
+    </modules>
+
+    <properties>
+        <revision>0.1.0</revision>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>17</java.version>
+        <maven.version>3.8.1</maven.version>
+        <spring-boot.version>3.4.5</spring-boot.version>
+        <spring-ai.version>1.0.0-SNAPSHOT</spring-ai.version>
+        <spring-framework.version>6.2.6</spring-framework.version>
+        <mysql-connector.version>8.4.0</mysql-connector.version>
+        <druid.version>1.2.23</druid.version>
+        <mybatis-plus-version>3.5.8</mybatis-plus-version>
+        <redisson.version>3.37.0</redisson.version>
+        <mockito-inline.version>4.8.1</mockito-inline.version>
+        <org.projectlombok.version>1.18.36</org.projectlombok.version>
+        <jackson.version>2.17.2</jackson.version>
+        <guava.version>33.3.1-jre</guava.version>
+        <slf4j-api.version>2.0.16</slf4j-api.version>
+        <hutool.version>5.8.32</hutool.version>
+        <mapstruct.version>1.6.3</mapstruct.version>
+        <icc.sdk.version>1.0.13.10</icc.sdk.version>
+        <isecure.sdk.version>1.1.13.RELEASE</isecure.sdk.version>
+        <thumbnailator.version>0.4.20</thumbnailator.version>
+        <metadata-extractor.version>2.19.0</metadata-extractor.version>
+        <knife4j.version>4.5.0</knife4j.version>
+        <springdoc-openapi.version>2.7.0</springdoc-openapi.version>
+        <maven-surefire-plugin.version>3.5.0</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org.projectlombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${thumbnailator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.drewnoakes</groupId>
+                <artifactId>metadata-extractor</artifactId>
+                <version>${metadata-extractor.version}</version>
+            </dependency>
+
+            <!-- ICC鉴权 -->
+            <dependency>
+                <groupId>com.dahuatech.icc</groupId>
+                <artifactId>java-sdk-oauth</artifactId>
+                <version>${icc.sdk.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>java-sdk-core</artifactId>
+                        <groupId>com.dahuatech.icc</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.dahuatech.icc</groupId>
+                <artifactId>java-sdk-core</artifactId>
+                <version>${icc.sdk.version}</version>
+            </dependency>
+            <!-- ICC基础资源SDK -->
+            <dependency>
+                <groupId>com.dahuatech.icc</groupId>
+                <artifactId>java-sdk-brm</artifactId>
+                <version>${icc.sdk.version}</version>
+            </dependency>
+            <!-- ICC 事件中心sdk -->
+            <dependency>
+                <groupId>com.dahuatech.icc</groupId>
+                <artifactId>java-sdk-event</artifactId>
+                <version>${icc.sdk.version}</version>
+            </dependency>
+            <!-- ICC 访问控制sdk -->
+            <dependency>
+                <groupId>com.dahuatech.icc</groupId>
+                <artifactId>java-sdk-accesscontrol</artifactId>
+                <version>${icc.sdk.version}</version>
+            </dependency>
+            <!-- ICC 运维管理sdk -->
+            <dependency>
+                <groupId>com.dahuatech.icc</groupId>
+                <artifactId>java-sdk-admin</artifactId>
+                <version>${icc.sdk.version}</version>
+            </dependency>
+
+            <!-- Hikvision SDK，中央仓库中不存在。需要本地install或者加入私有仓库 -->
+            <dependency>
+                <groupId>com.hikvision.ga</groupId>
+                <artifactId>artemis-http-client</artifactId>
+                <version>${isecure.sdk.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-ui</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc-openapi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>info.zhihui</groupId>
+                <artifactId>idevice-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>info.zhihui</groupId>
+                <artifactId>idevice-components-datasource</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>info.zhihui</groupId>
+                <artifactId>idevice-components-lock</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.version}</version>
+                <configuration>
+                    <skip>false</skip>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.source}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- spring ai -->
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>central-portal-snapshots</id>
+            <name>Central Portal Snapshots</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>

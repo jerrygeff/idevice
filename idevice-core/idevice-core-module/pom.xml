@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>info.zhihui</groupId>
+        <artifactId>idevice-core</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>idevice-core-module</artifactId>
+    <version>${revision}</version>
+    <name>device-module</name>
+    <description>Various vendors' implementations of different module device functions</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>info.zhihui</groupId>
+            <artifactId>idevice-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>info.zhihui</groupId>
+            <artifactId>idevice-components-datasource</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>info.zhihui</groupId>
+            <artifactId>idevice-components-lock</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>info.zhihui</groupId>
+            <artifactId>idevice-core-sdk-dahua</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>info.zhihui</groupId>
+            <artifactId>idevice-core-sdk-hikvision</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
