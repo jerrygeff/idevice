@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="info.zhihui.idevice.core.module.relation.repository.ThirdPartyRelationRepository">
+    <update id="deleteUnique">
+        update device_third_party_relation
+        set is_deleted = 1
+        where
+          local_business_key = #{localBusinessKey}
+          and local_module_name = #{localModuleName}
+          and area_id = #{areaId}
+          and third_party_module_name = #{thirdPartyModuleName}
+          and is_deleted != 1
+    </update>
+
+    <select id="getRelation" resultType="info.zhihui.idevice.core.module.relation.entity.ThirdPartyRelationEntity">
+        select *
+        from device_third_party_relation
+        where is_deleted = 0
+        and area_id = #{areaId}
+        and third_party_module_name = #{thirdPartyModuleName}
+        <if test="thirdPartyBusinessKey != null">
+            and third_party_business_key = #{thirdPartyBusinessKey}
+        </if>
+        <if test="localBusinessKey != null">
+            and local_business_key = #{localBusinessKey}
+        </if>
+        <if test="localModuleName != null">
+            and local_module_name = #{localModuleName}
+        </if>
+        order by id desc limit 1;
+    </select>
+
+    <select id="getRelationIncludeDeleted" resultType="info.zhihui.idevice.core.module.relation.entity.ThirdPartyRelationEntity">
+        select * from device_third_party_relation
+        where
+          local_business_key = #{localBusinessKey}
+          and local_module_name = #{localModuleName}
+          and area_id = #{areaId}
+          and third_party_module_name = #{thirdPartyModuleName}
+        order by id desc
+            limit 1;
+    </select>
+
+</mapper>

@@ -1,0 +1,114 @@
+server:
+  port: 8080
+
+spring:
+  ai:
+    mcp:
+      server:
+        name: idevice-mcp-server
+        version: 0.1.0
+  application:
+    name: IDEVICE-SERVICE
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/idevice_db?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF8&useSSL=false&allowPublicKeyRetrieval=true&allowMultiQueries=true
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: dev
+    password: yourPass
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  data:
+    redis:
+      # 地址
+      host: 127.0.0.1
+      # 端口，默认为6379
+      port: 6379
+      # 数据库索引
+      database: 8
+      # 密码(如没有密码请注释掉)
+      password: 123456
+      # 连接超时时间
+      timeout: 5s
+      # 是否开启ssl
+      ssl.enabled: false
+
+redisson:
+  # redis key前缀
+  keyPrefix:
+  # 线程池数量
+  threads: 4
+  # Netty线程池数量
+  nettyThreads: 8
+  # 单节点配置
+  singleServerConfig:
+    # 客户端名称
+    clientName: idevice-redisson-client
+    # 最小空闲连接数
+    connectionMinimumIdleSize: 8
+    # 连接池大小
+    connectionPoolSize: 32
+    # 连接空闲超时，单位：毫秒
+    idleConnectionTimeout: 10000
+    # 命令等待超时，单位：毫秒
+    timeout: 3000
+
+mybatis-plus:
+  repositoryPackage: info.zhihui.idevice.**.repository
+  mapperLocations: classpath*:mapper/**/*Repository.xml
+  typeAliasesPackage: info.zhihui.idevice.**.entity
+
+logging:
+  file:
+    name: ./logs/idevice.log
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+    info.zhihui.idevice: debug
+  logback:
+    rolling policy:
+      max-file-size: 100MB
+      max-history: 30
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [${PID}] [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [${PID}] [%thread] %-5level %logger{36} - %msg%n"
+
+lock:
+  distributed: false
+  local-lock-properties:
+    max-size: 10000
+
+# springdoc-openapi项目配置
+springdoc:
+  group-configs:
+    - group: '门禁管理'
+      packages-to-scan: info.zhihui.idevice.web.access.controller
+    - group: '摄像头管理'
+      packages-to-scan: info.zhihui.idevice.web.camera.controller
+    - group: '人员管理'
+      packages-to-scan: info.zhihui.idevice.web.person.controller
+    - group: '配置管理'
+      packages-to-scan: info.zhihui.idevice.web.config.controller
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# 对接真实设备：true；对接模拟数据：false
+useRealDevice: true
