@@ -42,11 +42,6 @@ public class RealTimeLinkRequest extends AbstractIccRequest<RealTimeLinkResponse
         return RealTimeLinkResponse.class;
     }
 
-    private void setData(RealTimeLinkRequestData data) {
-        this.data = data;
-        putBodyParameter("data", data);
-    }
-
     public static final class Builder {
         private String channelId;
         private String streamType;

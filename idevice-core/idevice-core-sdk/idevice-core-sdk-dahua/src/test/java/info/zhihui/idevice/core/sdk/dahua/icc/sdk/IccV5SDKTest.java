@@ -22,16 +22,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IccV5SDKTest {
     private final IccV5SDK iccV5SDK = new IccV5SDK();
 
-    private final IccSdkConfig iccSdkConfig = new IccSdkConfig()
-            .setIccSdkHost("124.160.33.135")
-            .setIccSdkClientId("CompanyName")
-            .setIccSdkClientSecret("42bec152-8f04-476a-9aec-e7d616ff3cb3")
-            .setIccSdkUserName("TEST")
-            .setIccSdkPassword("OGR28u6_cc")
-            .setIsEnableHttpTest(false)
-            .setPort("4077");
-
-    private static final String CARD_NUM = "88822222";
+//    private final IccSdkConfig iccSdkConfig = new IccSdkConfig()
+//            .setIccSdkHost("124.160.33.135")
+//            .setIccSdkClientId("CompanyName")
+//            .setIccSdkClientSecret("42bec152-8f04-476a-9aec-e7d616ff3cb3")
+//            .setIccSdkUserName("TEST")
+//            .setIccSdkPassword("OGR28u6_cc")
+//            .setIsEnableHttpTest(false)
+//            .setPort("4077");
+//
+//    private static final String CARD_NUM = "88822222";
 
     @Test
     public void testGetCapabilities() {
