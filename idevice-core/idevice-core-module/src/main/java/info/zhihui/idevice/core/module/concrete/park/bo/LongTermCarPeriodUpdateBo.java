@@ -1,0 +1,29 @@
+package info.zhihui.idevice.core.module.concrete.park.bo;
+
+import info.zhihui.idevice.core.module.concrete.foundation.bo.LocalPersonBo;
+
+import java.util.List;
+
+/**
+ * @author jerryge
+ */
+public class LongTermCarPeriodUpdateBo {
+
+    private LocalPersonBo localPersonBo;
+
+    /**
+     * 停车场编号
+     */
+    private List<String> parkCodeList;
+
+    /**
+     * 车牌号码
+     */
+    private String carNumber;
+
+    /**
+     * 有效时间段
+     */
+    private TimePeriod timePeriod;
+
+}
