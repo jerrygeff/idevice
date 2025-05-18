@@ -37,7 +37,7 @@ public interface Park {
     /**
      * 临时车辆取消预约
      */
-    void cancelTemporaryCar(String orderSn);
+    void cancelTemporaryCar(String reserveOrderSn);
 
     /**
      * 查询预约记录

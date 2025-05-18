@@ -36,7 +36,7 @@ public class ISecureV2ParkImpl implements Park {
     }
 
     @Override
-    public void cancelTemporaryCar(String orderSn) {
+    public void cancelTemporaryCar(String reserveOrderSn) {
 
     }
 
