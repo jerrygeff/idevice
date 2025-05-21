@@ -2,6 +2,8 @@ package info.zhihui.idevice.core.sdk.dahua.icc.sdk;
 
 import info.zhihui.idevice.core.sdk.dahua.icc.IccV5SDK;
 import info.zhihui.idevice.core.sdk.dahua.icc.dto.config.IccSdkConfig;
+import info.zhihui.idevice.core.sdk.dahua.icc.dto.park.v5.ParkCarReservationAddRequest;
+import info.zhihui.idevice.core.sdk.dahua.icc.dto.park.v5.ParkCarReservationAddResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+import static info.zhihui.idevice.core.sdk.dahua.icc.constants.IccParkConstant.DEFAULT_RESERVATION_TYPE;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -22,16 +25,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IccV5SDKTest {
     private final IccV5SDK iccV5SDK = new IccV5SDK();
 
-//    private final IccSdkConfig iccSdkConfig = new IccSdkConfig()
-//            .setIccSdkHost("124.160.33.135")
-//            .setIccSdkClientId("CompanyName")
-//            .setIccSdkClientSecret("42bec152-8f04-476a-9aec-e7d616ff3cb3")
-//            .setIccSdkUserName("TEST")
-//            .setIccSdkPassword("OGR28u6_cc")
-//            .setIsEnableHttpTest(false)
-//            .setPort("4077");
-//
-//    private static final String CARD_NUM = "88822222";
+    private final IccSdkConfig iccSdkConfig = new IccSdkConfig()
+            .setIccSdkHost("124.160.33.135")
+            .setIccSdkClientId("CompanyName")
+            .setIccSdkClientSecret("42bec152-8f04-476a-9aec-e7d616ff3cb3")
+            .setIccSdkUserName("TEST")
+            .setIccSdkPassword("OGR28u6_cc")
+            .setIsEnableHttpTest(false)
+            .setPort("4077");
+
+    private static final String CARD_NUM = "88822222";
 
     @Test
     public void testGetCapabilities() {
@@ -318,5 +321,19 @@ public class IccV5SDKTest {
 //        log.info("response: {}", response);
 //        Assertions.assertNotNull(response.getData().getUrl());
 //    }
+
+    @Test
+    public void testParkCarReservationAdd() {
+        ParkCarReservationAddRequest request = new ParkCarReservationAddRequest.Builder()
+                .carNum("苏EJP888")
+                .consumerName("jerryge")
+                .telNumber("13913404821")
+                .reservationType(DEFAULT_RESERVATION_TYPE)
+                .startTimeStr("2025-07-01 00:00:00")
+                .endTimeStr("2025-07-02 00:00:00")
+                .build();
+       ParkCarReservationAddResponse response = iccV5SDK.parkCarReservationAdd(iccSdkConfig, request);
+       log.info("response: {}", response);
+    }
 
 }

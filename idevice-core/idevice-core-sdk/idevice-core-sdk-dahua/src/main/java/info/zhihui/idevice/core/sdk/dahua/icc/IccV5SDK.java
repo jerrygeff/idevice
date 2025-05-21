@@ -16,6 +16,8 @@ import info.zhihui.idevice.core.sdk.dahua.icc.dto.brm.v5.BrmPersonUpdateRequest;
 import info.zhihui.idevice.core.sdk.dahua.icc.dto.brm.v5.BrmPersonUpdateResponse;
 import info.zhihui.idevice.core.sdk.dahua.icc.dto.brm.v5.*;
 import info.zhihui.idevice.core.sdk.dahua.icc.dto.camera.v5.*;
+import info.zhihui.idevice.core.sdk.dahua.icc.dto.park.v5.ParkCarReservationAddRequest;
+import info.zhihui.idevice.core.sdk.dahua.icc.dto.park.v5.ParkCarReservationAddResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -210,7 +212,7 @@ public class IccV5SDK extends BaseIcc {
 
     // -------------------- 基础模块相关接口结束 --------------------
 
-    // -------------------- 视频模块相关接口结束 --------------------
+    // -------------------- 视频模块相关接口开始 --------------------
 
     /**
      * 获取实时流
@@ -234,5 +236,21 @@ public class IccV5SDK extends BaseIcc {
     }
 
     // -------------------- 视频模块相关接口结束 --------------------
+
+    // -------------------- 停车场相关接口开始 --------------------
+    
+    /**
+     * 添加预约车辆
+     * 根据车牌号，预约停车。停车场默认不支持预约，必须启用指定场区的预约功能
+     * 
+     * @param config ICC配置信息
+     * @param request 预约车辆请求
+     * @return 预约车辆响应
+     */
+    public ParkCarReservationAddResponse parkCarReservationAdd(IccSdkConfig config, ParkCarReservationAddRequest request) {
+        return doActionWithConfig(config, request, request.getResponseClass());
+    }
+    
+    // -------------------- 停车场相关接口结束 --------------------
 
 }
