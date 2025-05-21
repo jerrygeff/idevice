@@ -23,7 +23,7 @@ public class RealTimeLinkRequest extends AbstractIccRequest<RealTimeLinkResponse
     private RealTimeLinkRequestData data;
 
     private RealTimeLinkRequest(Builder builder) {
-        super(String.format(IccProfile.URL_SCHEME + CAMERA_URL_REALTIME), Method.POST);
+        super(IccProfile.URL_SCHEME + CAMERA_URL_REALTIME, Method.POST);
 
         this.data = RealTimeLinkRequestData.builder()
                 .channelId(builder.channelId)

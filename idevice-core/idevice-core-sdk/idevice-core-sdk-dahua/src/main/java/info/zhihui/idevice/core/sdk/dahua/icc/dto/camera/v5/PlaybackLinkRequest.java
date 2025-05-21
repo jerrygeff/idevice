@@ -27,7 +27,7 @@ public class PlaybackLinkRequest extends AbstractIccRequest<PlaybackLinkResponse
     private PlaybackLinkRequestData data;
 
     private PlaybackLinkRequest(Builder builder) {
-        super(String.format(IccProfile.URL_SCHEME + CAMERA_URL_PLAYBACK), Method.POST);
+        super(IccProfile.URL_SCHEME + CAMERA_URL_PLAYBACK, Method.POST);
         this.data = PlaybackLinkRequestData.builder()
                 .channelId(builder.channelId)
                 .streamType(builder.streamType)

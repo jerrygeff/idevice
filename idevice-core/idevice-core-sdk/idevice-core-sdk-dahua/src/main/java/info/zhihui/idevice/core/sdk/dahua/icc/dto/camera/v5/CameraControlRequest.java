@@ -27,7 +27,7 @@ public class CameraControlRequest extends AbstractIccRequest<CameraControlRespon
     private CameraControlRequestData data;
 
     private CameraControlRequest(Builder builder) {
-        super(String.format(IccProfile.URL_SCHEME + CAMERA_URL_CONTROL), Method.POST);
+        super(IccProfile.URL_SCHEME + CAMERA_URL_CONTROL, Method.POST);
         this.data = CameraControlRequestData.builder()
                 .channelId(builder.channelId)
                 .direct(builder.direct)
